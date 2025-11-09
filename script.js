@@ -1,11 +1,12 @@
-const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
-document.body.appendChild(getSumBtn);
+//your JS code here. If required.
+let level = document.getElementById("level");
 
-const getSum = () => {
-//Add your code here
-  
-};
+let count = 0;
+let currentLevel = level;
 
-getSumBtn.addEventListener("click", getSum);
+while (currentLevel != null) {
+	currentLevel = currentLevel.parentNode;
+	count++
+}
 
+alert("The level of the element is: " + count);
