@@ -1,32 +1,29 @@
-let table = document.getElementsByTagName("table")[0];
-let prices = document.querySelectorAll(".price");
-	
 const getSumBtn = document.createElement("button");
-getSumBtn.style.cursor = "pointer";
 getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
-getSumBtn.addEventListener("click", ()=>{
-	const oldRow = document.getElementById("totalRow");
-	if(oldRow) {
-		oldRow.remove();
-	}
+const getSum = () => {
+//Add your code here
+	const table = document.querySelector("table");
 	const tableRow = document.createElement("tr");
-	tableRow.id = "totalRow"
-	const tableDataPrices = document.createElement("td");
-	const tableDataPricesSum = document.createElement("td");
-	tableDataPrices.textContent = "Total Price";
-	tableDataPricesSum.textContent = getSum();
-	tableDataPricesSum.innerHTML = `<span id="ans">${getSum()}</span>`;
-	tableRow.appendChild(tableDataPrices);
-	tableRow.appendChild(tableDataPricesSum);
-	table.appendChild(tableRow);
-})
-
-function getSum() {
+	const tableData = document.createElement("td");
+	const tableData2 = document.createElement("td");
+	const allPrices = document.querySelectorAll(".price");
+	
 	let sum = 0;
-	for(let price of prices) {
+	for(let price of allPrices){
 		sum += parseInt(price.textContent)
 	}
-	return sum;
-}
+	
+	tableData.textContent = "Total Price"
+	tableData2.textContent = sum;
+
+	
+	table.appendChild(tableRow);
+	tableRow.classList.add("total-row");
+	tableRow.appendChild(tableData);
+	tableRow.appendChild(tableData2);
+	getSumBtn.disabled = true;
+};
+
+getSumBtn.addEventListener("click", getSum);
